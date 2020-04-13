@@ -24,9 +24,26 @@ $("#play").on("click",() => {
     var currPlay = false;
     var randAudio = 1;
     var prevAudio = 0;
-
+    var complete = {
+        powerOnComputer:false
+    };
+    document.getElementById("powerOn").addEventListener("mouseup", () => {
+        if (complete.powerOnComputer == true) {
+            complete.powerOnComputer = false;
+        } else {
+            complete.powerOnComputer = true;
+        }
+    });
     // forever
     setInterval(() => {
+        
+        
+
+        if (complete.powerOnComputer == true) {
+            document.getElementById("reposnse").style.visibility = "visible";
+        } else {
+            document.getElementById("reposnse").style.visibility = "hidden";
+        }
 
         // if no song is currently playing,
         if(!currPlay) {
@@ -52,7 +69,7 @@ $("#play").on("click",() => {
             // set playing to false
             currPlay = false;
         }
-    },1000);
+    },100);
 
     $("#mainPage").css("display","none");
     $(".loader").css("display","block");
